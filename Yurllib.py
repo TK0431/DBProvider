@@ -2,6 +2,14 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 
+class decodeEnum():
+    """
+    编码枚举
+    """
+    # utf-8
+    UTF8 = 0
+    OTHER = 9
+
 def urllibOpen(url):
     """
     通过urlopen尝试打开网页
@@ -20,9 +28,14 @@ def urllibOpen(url):
     # 返回获取结果
     return html
 
-def urllibDecoding(html):
+def urllibDecoding(html, decode):
     """
     解码网页
     :param html:网页Html内容
     """
-    return BeautifulSoup(html.read().decode("utf-8"),"html.parser")
+    # 解码对应字典
+    d = {\
+        decodeEnum.UTF8:"utf-8",\
+        decodeEnum.OTHER:""}
+    # 解码
+    return BeautifulSoup(html.read().decode(d[decode]),"html.parser")

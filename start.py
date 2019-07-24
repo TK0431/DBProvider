@@ -1,6 +1,6 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
-from Yurllib import urllibOpen, urllibDecoding
+from Yurllib import urllibOpen, urllibDecoding, decodeEnum
 
 def mainUlrOpen(url):
     """
@@ -11,7 +11,7 @@ def mainUlrOpen(url):
     html = urllibOpen(url)
     if html:
         # 解码
-        bsObj = urllibDecoding(html)
+        bsObj = urllibDecoding(html, decodeEnum.UTF8)
         print(bsObj)
 
 if __name__ == "__main__":
